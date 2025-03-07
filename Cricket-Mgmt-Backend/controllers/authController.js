@@ -7,6 +7,12 @@ exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
+    // Validate role
+    const validRoles = ['admin', 'player', 'fan'];
+    if (role && !validRoles.includes(role)) {
+      return res.status(400).json({ message: "Invalid role specified" });
+    }
+
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });

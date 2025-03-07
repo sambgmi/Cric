@@ -16,5 +16,9 @@ app.use(morgan("dev"));
 
 app.use("/api/auth", require("./routes/authRoutes"));
 
+const tournamentRoutes = require('./routes/tournamentRoutes');
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.use('/api/tournaments', tournamentRoutes);

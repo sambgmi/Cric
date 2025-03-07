@@ -8,8 +8,8 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
-import PlayerDashboard from './components/PlayerDashboard';
-import FanDashboard from './components/FanDashboard';
+import AdminDashboard from './components/admin/AdminDashboard';
+import TournamentManagement from './components/admin/TournamentManagement';
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/player/dashboard" element={<PlayerDashboard />} />
-          <Route path="/fan/dashboard" element={<FanDashboard />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/tournaments" element={<TournamentManagement />} />
         </Routes>
       </div>
     </Router>

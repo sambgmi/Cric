@@ -38,20 +38,17 @@ function Login() {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         
-        const userRole = response.data.user.role;
-        console.log('User role:', userRole); // Debug log
+        console.log('User role:', response.data.user.role); // Debug log
         
-        if (userRole === 'player') {
-          window.location.href = '/player/dashboard';
-        } else if (userRole === 'fan') {
-          console.log('Redirecting to fan dashboard...'); // Debug log
-          window.location.href = '/fan/dashboard';
+        if (response.data.user.role === 'admin') {
+          navigate('/admin/dashboard', { replace: true });
+        } else if (response.data.user.role === 'player') {
+          navigate('/player/dashboard', { replace: true });
         } else {
-          console.log('Unknown role:', userRole); // Debug log
-          setSubmitError('Invalid user role');
+          navigate('/fan/dashboard', { replace: true });
         }
       } catch (error) {
-        console.error('Login error:', error); // Debug log
+        console.error('Login error:', error);
         setSubmitError(error.response?.data?.message || 'Login failed');
       }
     }
