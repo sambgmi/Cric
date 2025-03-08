@@ -28,4 +28,14 @@ const deleteTournament = async (id, token) => {
   return response.data;
 };
 
-export { getTournaments, createTournament, updateTournament, deleteTournament };
+const registerTeam = async (tournamentId, teamData, token) => {
+  const response = await axios.post(`${API_URL}/${tournamentId}/register`, teamData, {
+    headers: { 
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
+  return response.data;
+};
+
+export { getTournaments, createTournament, updateTournament, deleteTournament, registerTeam };

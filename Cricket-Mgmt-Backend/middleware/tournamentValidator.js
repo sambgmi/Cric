@@ -1,6 +1,7 @@
 const { check } = require('express-validator');
 
-exports.tournamentValidation = [
+// Tournament creation/update validation
+const tournamentValidation = [
   check('name')
     .notEmpty()
     .withMessage('Tournament name is required')
@@ -33,10 +34,29 @@ exports.tournamentValidation = [
   check('location')
     .notEmpty()
     .withMessage('Location is required')
-    .trim(),
-
-  check('status')
-    .optional()
-    .isIn(['Upcoming', 'Ongoing', 'Completed'])
-    .withMessage('Invalid status')
+    .trim()
 ];
+
+// Team registration validation
+const registerTeamValidation = [
+  check('teamName')
+    .notEmpty()
+    .withMessage('Team name is required'),
+  
+  check('players')
+    .isArray({ min: 11, max: 11 })
+    .withMessage('Exactly 11 players are required'),
+  
+  check('players.*.name')
+    .notEmpty()
+    .withMessage('Player name is required'),
+  
+  check('players.*.role')
+    .isIn(['Batsman', 'Bowler', 'All-Rounder', 'Wicket-Keeper'])
+    .withMessage('Invalid player role')
+];
+
+module.exports = {
+  tournamentValidation,
+  registerTeamValidation
+};
