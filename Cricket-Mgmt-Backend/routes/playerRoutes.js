@@ -37,4 +37,38 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
+// Get all players list
+router.get('/list', async (req, res) => {
+  try {
+    const players = await Player.find()
+      .populate('teamId', 'name')
+      .populate('userId', 'name email')
+      .select('name role stats teamId userId');
+    res.json(players);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/getplayers", async (req, res) => {
+  try {
+    const players = await Player.find({ role: "player" }); // Fetch only players
+
+    if (!players || players.length === 0) {
+      return res.status(404).json({ message: "Players not found" });
+    }
+
+    res.json(players);
+  } catch (error) {
+    console.error("Error fetching players:", error);
+
+    // Check for CastError (invalid ObjectId)
+    if (error.name === "CastError") {
+      return res.status(400).json({ message: "Invalid ID format" });
+    }
+
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 module.exports = router;

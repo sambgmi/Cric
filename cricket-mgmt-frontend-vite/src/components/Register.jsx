@@ -61,11 +61,18 @@ function Register() {
         const response = await axios.post('http://localhost:5000/api/auth/register', {
           name: formData.name,
           email: formData.email,
-          password: formData.password
+          password: formData.password,
+          role: formData.role  // Include role in the request
         });
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
-        navigate('/');
+        
+        // Redirect based on role
+        if (formData.role === 'operator') {
+          navigate('/operatordashboard');
+        } else {
+          navigate('/');
+        }
       } catch (error) {
         setSubmitError(error.response?.data?.message || 'Registration failed');
       }
@@ -134,7 +141,8 @@ function Register() {
                 onChange={(e) => setFormData({...formData, role: e.target.value})}
               >
                 <option value="player">Player</option>
-                <option value="fan">Fan</option>
+                
+                
               </Form.Select>
             </Form.Group>
             

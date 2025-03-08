@@ -1,0 +1,20 @@
+.live-scoreboard {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.live-scoreboard .card-header {
+  font-weight: bold;
+}
+
+.operator-dashboard .btn-group {
+  gap: 5px;
+}
+
+.operator-dashboard .card-body {
+  gap: 1rem;
+}
+
+.operator-dashboard h5 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}

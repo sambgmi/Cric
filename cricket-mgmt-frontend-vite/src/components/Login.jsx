@@ -44,7 +44,10 @@ function Login() {
           navigate('/admin/dashboard', { replace: true });
         } else if (response.data.user.role === 'player') {
           navigate('/player/dashboard', { replace: true });
-        } else {
+        } else if(response.data.user.role === 'operator'){
+          navigate('/operatordashboard', { replace: true });
+          
+        }else{
           navigate('/fan/dashboard', { replace: true });
         }
       } catch (error) {

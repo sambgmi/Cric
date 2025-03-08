@@ -2,6 +2,7 @@ import { Container, Row, Col, Card, Button, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaTrophy, FaUserPlus, FaSignInAlt, FaHome, FaInfoCircle } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+
 import "./Home.css"
 function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -148,7 +149,7 @@ function Home() {
                 {/* Dashboard button in the middle instead of login/register */}
                 <Row className="justify-content-center mt-5">
                   <Col md={8} lg={6}>
-                    <Link to="/admin" style={{ textDecoration: 'none' }}>
+                    <Link to="/livescore" style={{ textDecoration: 'none' }}>
                       <Button 
                         variant="warning" 
                         size="lg" 
@@ -163,7 +164,7 @@ function Home() {
                         }}
                       >
                         <span style={{ position: 'relative', zIndex: 2 }}>
-                          Enter Dashboard
+                          Live Score
                         </span>
                       </Button>
                     </Link>

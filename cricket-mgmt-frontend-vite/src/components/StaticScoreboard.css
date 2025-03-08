@@ -1,0 +1,45 @@
+.scoreboard-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.scoreboard-card .card-header {
+  padding: 1rem;
+}
+
+.scoreboard-card h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: #2c3e50;
+}
+
+.scoreboard-card h4 {
+  color: #34495e;
+  margin-bottom: 1rem;
+}
+
+.scoreboard-card table {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.scoreboard-card th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.match-info {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.match-info p {
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.border-end {
+  border-right: 1px solid #dee2e6;
+}

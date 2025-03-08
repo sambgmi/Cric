@@ -53,11 +53,18 @@ exports.loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "30d",
-    });
-
+    // Include role in token payload
+    const token = jwt.sign(
+      { 
+        id: user._id,
+        role: user.role 
+      }, 
+      process.env.JWT_SECRET,
+      { expiresIn: "30d" }
+    );
+    // Remove localStorage.setItem as it's frontend code
     res.json({
+      success: true,
       user: {
         id: user._id,
         name: user.name,
